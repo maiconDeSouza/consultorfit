@@ -4640,3 +4640,13 @@ blockquote:before {
 .mcn-color{
   color: #f23849;
 }
+
+.mcn-background{
+  padding: 0.5rem;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.mcn-title-p{
+  background-color: rgba(0, 0, 0, 0.7) !important;
+  font-weight: 900 !important;
+}
