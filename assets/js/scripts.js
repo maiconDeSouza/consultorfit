@@ -401,3 +401,35 @@
 	}
 
 }(jQuery));
+
+
+
+//mcn -js
+
+const linksInternos = document.querySelectorAll('a[href^="#"]');
+
+// Percorre os links e adiciona um evento de clique
+linksInternos.forEach(link => {
+  link.addEventListener('click', function(event) {
+    event.preventDefault(); // Impede o comportamento padrão do link
+
+    const href = this.getAttribute('href'); // Obtém o valor do atributo href
+    const offsetTop = document.querySelector(href).offsetTop; // Obtém a posição do elemento
+
+    scroll({
+      top: offsetTop,
+      behavior: "smooth" // Comportamento suave da rolagem
+    });
+  });
+});
+
+
+const floatingButton = document.querySelector('.floating-whatsapp');
+
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 200) {
+    floatingButton.classList.add('visible');
+  } else {
+    floatingButton.classList.remove('visible');
+  }
+});
