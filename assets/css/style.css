@@ -4679,3 +4679,7 @@ blockquote:before {
   width: 40px;
   height: 40px;
 }
+
+.mcn-h1-home{
+  font-size: 1rem;
+}
