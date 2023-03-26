@@ -332,15 +332,6 @@
 	<script src="assets/js/parallax.min.js"></script>
 	<script src="assets/js/scripts.js"></script>
 
-	<script>
-		// Transforma todas as URLs em links amigáveis
-const links = document.querySelectorAll('a');
-for (let i = 0; i < links.length; i++) {
-  let href = links[i].getAttribute('href');
-  if (href && href.startsWith('/') && !href.startsWith('//')) {
-    links[i].setAttribute('href', baseUrl + href);
-  }
-}
-	</script>
+
 </body>
 </html>
