@@ -435,31 +435,3 @@ window.addEventListener('scroll', () => {
 });
 
 
-
-
-// url amigavel
-
-function getFriendlyURL(currentURL) {
-	// sua lógica de criação de URL amigável aqui
-	return friendlyURL;
-  }
-
-  
-  if (history.replaceState) {
-	var currentURL = window.location.href;
-	var friendlyURL = getFriendlyURL(currentURL);
-	history.replaceState(null, null, friendlyURL);
-  }
-
-  
-  var links = document.querySelectorAll("a");
-
-for (var i = 0; i < links.length; i++) {
-  links[i].addEventListener("click", function(event) {
-    event.preventDefault();
-    var currentURL = this.href;
-    var friendlyURL = getFriendlyURL(currentURL);
-    history.pushState(null, null, friendlyURL);
-    window.location.href = friendlyURL;
-  });
-}
