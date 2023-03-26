@@ -15,7 +15,8 @@
 	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
 	<link rel="stylesheet" href="assets/css/style.css">
 	
-	<base href="/">
+	
+	<base href="https://maicondesouza.github.io/consultorfit/blog">
 </head>
 
 <body id="home">
@@ -332,10 +333,14 @@
 	<script src="assets/js/scripts.js"></script>
 
 	<script>
-		var url = window.location.pathname;
-		var parts = url.split('/');
-		var lastSegment = parts.pop() || parts.pop();
-		history.replaceState(null, null, '/' + lastSegment);
+		// Transforma todas as URLs em links amigáveis
+const links = document.querySelectorAll('a');
+for (let i = 0; i < links.length; i++) {
+  let href = links[i].getAttribute('href');
+  if (href && href.startsWith('/') && !href.startsWith('//')) {
+    links[i].setAttribute('href', baseUrl + href);
+  }
+}
 	</script>
 </body>
 </html>
