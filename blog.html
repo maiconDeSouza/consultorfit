@@ -15,7 +15,7 @@
 	<link rel="stylesheet" href="assets/css/font-awesome.min.css">
 	<link rel="stylesheet" href="assets/css/style.css">
 	
-
+	<base href="/">
 </head>
 
 <body id="home">
@@ -330,5 +330,12 @@
 	<script src="assets/js/rx-lazy.js"></script>
 	<script src="assets/js/parallax.min.js"></script>
 	<script src="assets/js/scripts.js"></script>
+
+	<script>
+		var url = window.location.pathname;
+		var parts = url.split('/');
+		var lastSegment = parts.pop() || parts.pop();
+		history.replaceState(null, null, '/' + lastSegment);
+	</script>
 </body>
 </html>
