@@ -433,3 +433,61 @@ window.addEventListener('scroll', () => {
     floatingButton.classList.remove('visible');
   }
 });
+
+
+(function ( $, window, document, undefined ) {
+
+	// Create the defaults once
+	var pluginName = "urlAmigavel",
+			defaults = {
+			alvo: ".recebe-url-amigavel"
+	};
+
+	// The actual plugin constructor
+	function Plugin ( element, options ) {
+			this.element = element;
+			this.settings = $.extend( {}, defaults, options );
+			this._defaults = defaults;
+			this._name = pluginName;
+			this.init();
+	}
+
+	Plugin.prototype = {
+			init: function () {
+				var me = this;
+				$(me.element).on('keyup', function () {
+					me.limpaCaracteres(me.element.value);
+				});
+			},
+
+			limpaCaracteres: function (string) {
+				var retorno = string;
+				// faz as substituições dos acentos
+				retorno = retorno.replace(/[á|ã|â|à]/gi, "a");
+				retorno = retorno.replace(/[é|ê|è]/gi, "e");
+				retorno = retorno.replace(/[í|ì|î]/gi, "i");
+				retorno = retorno.replace(/[õ|ò|ó|ô]/gi, "o");
+				retorno = retorno.replace(/[ú|ù|û]/gi, "u");
+				retorno = retorno.replace(/[ç]/gi, "c");
+				retorno = retorno.replace(/[ñ]/gi, "n");
+				retorno = retorno.replace(/[á|ã|â]/gi, "a");
+				// faz a substituição dos espaços e outros caracteres por - (hífen)
+				retorno = retorno.replace(/\W/gi, "-");
+				// remove - (hífen) duplicados
+				retorno = retorno.replace(/(\-)\1+/gi, "-");
+
+				$(this.settings.alvo).val(retorno);
+			}
+	};
+
+	// A really lightweight plugin wrapper around the constructor,
+	// preventing against multiple instantiations
+	$.fn[ pluginName ] = function ( options ) {
+			return this.each(function() {
+					if ( !$.data( this, "plugin_" + pluginName ) ) {
+							$.data( this, "plugin_" + pluginName, new Plugin( this, options ) );
+					}
+			});
+	};
+
+})( jQuery, window, document );
